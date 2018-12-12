@@ -1,0 +1,74 @@
+<template>
+	
+			<el-menu default-active="2" @select="select" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" @open="open" @close="close">
+				<el-submenu :index="i+''" v-for="(item,i) in nav">
+					<template slot="title">
+						<i :class="item.icon"></i>
+						<span v-text="item.title"></span>
+					</template>
+					<el-menu-item-group>
+						<el-menu-item v-for="(sub,j) in nav[i].sub" v-text="sub.title" :index="sub.path" ></el-menu-item>
+					</el-menu-item-group>
+				</el-submenu>
+			</el-menu>
+
+	
+</template>
+
+<script>
+	export default{
+		data(){
+		return{
+			nav: [{
+					title: "Basic",
+					icon: "el-icon-location",
+					sub:[{
+						title: "layerout布局",
+						path: "/layerout"
+					}, {
+						title: "container布局",
+						path: "/container"
+					}]
+				},{
+					title: "Form",
+					icon: "el-icon-location",
+					sub:[{
+						title: "layerout布局",
+						path: "/layerout"
+					}, {
+						title: "container布局",
+						path: "/container"
+					}]
+				},{
+					title: "Dta",
+					icon: "el-icon-location",
+					sub:[{
+						title: "layerout布局",
+						path: "/layerout"
+					}, {
+						title: "container布局",
+						path: "/container"
+					}]
+				}]
+		}},
+		methods:{
+			open(key, keyPath) {
+				console.log(key, keyPath);
+			},
+			close(key, keyPath) {
+				console.log(key, keyPath);
+			},
+			select( index, indexPath){
+				console.log(index);
+				console.log(indexPath);
+			}
+
+
+		}
+	}
+	
+	
+</script>
+
+<style>
+</style>
