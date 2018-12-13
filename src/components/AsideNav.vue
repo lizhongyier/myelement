@@ -34,21 +34,24 @@
 					icon: "el-icon-location",
 					sub:[{
 						title: "layerout布局",
-						path: "/layerout"
+						path: ""
 					}, {
 						title: "container布局",
-						path: "/container"
+						path: ""
 					}]
 				},{
 					title: "Dta",
 					icon: "el-icon-location",
 					sub:[{
 						title: "layerout布局",
-						path: "/layerout"
+						path: ""
 					}, {
 						title: "container布局",
-						path: "/container"
-					}]
+						path: ""
+					}, {
+						title: "container布局",
+						path: ""
+					},]
 				}]
 		}},
 		methods:{
@@ -59,6 +62,8 @@
 				console.log(key, keyPath);
 			},
 			select( index, indexPath){
+				this.$router.push(index);
+				
 				console.log(index);
 				console.log(indexPath);
 			}
