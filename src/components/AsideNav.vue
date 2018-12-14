@@ -1,6 +1,6 @@
 <template>
 	
-			<el-menu default-active="2" @select="select" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" @open="open" @close="close">
+			<el-menu default-active="2" @select="select" class="el-menu-vertical-demo" background-color="#20222A" text-color="#fff" active-text-color="#ffd04b" @open="open" @close="close">
 				<el-submenu :index="i+''" v-for="(item,i) in nav">
 					<template slot="title">
 						<i :class="item.icon"></i>
@@ -28,23 +28,26 @@
 					}, {
 						title: "container布局",
 						path: "/container"
+					}, {
+						title: "Icon 图标",
+						path: "/icon"
 					}]
 				},{
 					title: "Form",
 					icon: "el-icon-location",
 					sub:[{
-						title: "layerout布局",
-						path: ""
+						title: "Cascader 级联",
+						path: "/cascader"
 					}, {
-						title: "container布局",
-						path: ""
+						title: "Input 输入框",
+						path: "/input"
 					}]
 				},{
 					title: "Dta",
 					icon: "el-icon-location",
 					sub:[{
-						title: "layerout布局",
-						path: ""
+						title: "Score 成绩",
+						path: "/score"
 					}, {
 						title: "container布局",
 						path: ""

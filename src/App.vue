@@ -1,21 +1,26 @@
 <template>
-	<div id="app">
-		
-		<header>
-		</header>
-		<aside>
-			<aside-nav></aside-nav>
-		</aside>
-		<main>
-		<router-view></router-view>
-		</main>
-
-	</div>
+	
+		<el-container id="app">
+		  <el-aside width="220px">
+		  	<aside-nav></aside-nav>
+		  </el-aside>
+		  <el-container>
+		    <el-header>
+		    	<admin-header></admin-header>
+		    </el-header>
+		    <el-main>
+		    	<router-view></router-view>
+		    </el-main>
+		    <el-footer>©2018-2020 非凡学院</el-footer>
+		  </el-container>
+		</el-container>
 
 </template>
 
 <script>
-	import AsideNav from "@/components/AsideNav.vue"
+	import AsideNav from "@/components/AsideNav.vue";
+	import AdminHeader from "@/components/Header.vue";
+	
 	export default {
 
 		data() {
@@ -23,13 +28,13 @@
 			}
 		},
 		components:{
-			AsideNav
+			AsideNav,
+			AdminHeader
 		},
 		
 		methods: {
 
 		}
-
 	}
 </script>
 
@@ -43,38 +48,18 @@
 		height: 100%;
 		background-color: #f2f2f2;
 	}
-	
-	header {
-		width: 100%;
-		height: 50px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		border-bottom: 1px solid #ccc;
-		background-color: #fff;
+	.el-header{
+		background-color: #FFFFFF;
 	}
-	
-	aside {
-		position: fixed;
-		top: 0;
-		left: 0;
-		background-color: #20222A;
-		height: 100%;
-		width: 220px;
-		color: #FFFFFF;
-		overflow: hidden;
-		overflow-y: auto;
+	.el-aside{
+		background-color: #20222A!important;
 	}
-	
-	main {
-		padding: 15px;
-		box-sizing: border-box;
-		position: fixed;
-		top: 60px;
-		left: 220px;
-		right: 0;
-		bottom: ;
-		overflow: hidden;
-		overflow-y: auto;
+	.el-footer{
+		background-color: #FFFFFF;
+		line-height: 60px;
+	}
+	#app .el-header{
+		padding-left: 0;
+		padding-right: 0;
 	}
 </style>
