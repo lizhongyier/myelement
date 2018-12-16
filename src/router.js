@@ -7,6 +7,8 @@ import Icon from './views/Icon.vue'
 import Cascader from './views/Cascader.vue'
 import Input from './views/Input.vue'
 import Score from './views/Score.vue'
+import LeaveTips from './views/LeaveTips.vue'
+import TotalTips from './views/TotalTips.vue'
 
 Vue.use(Router)
 
@@ -48,6 +50,16 @@ export default new Router({
       path: '/score',
       name: 'score',
       component: Score
+    },
+    {
+      path: '/leavetips',
+      name: 'leavetips',
+      component: LeaveTips
+    },
+    {
+      path: '/totaltips',
+      name: 'totaltips',
+      component: TotalTips
     },
    
   ]

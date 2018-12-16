@@ -49,11 +49,11 @@
 						title: "Score 成绩",
 						path: "/score"
 					}, {
-						title: "container布局",
-						path: ""
+						title: "LeaveTips 请假条",
+						path: "/leavetips"
 					}, {
-						title: "container布局",
-						path: ""
+						title: "TotalTips 综合",
+						path: "/totaltips"
 					},]
 				}]
 		}},

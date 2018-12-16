@@ -1,4 +1,5 @@
 <template>
+	<div class="score_box">
 	<el-card class="box-card">
 		<div slot="header" class="clearfix">
 			<span>学生成绩</span>
@@ -21,7 +22,7 @@
 				<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="page" :page-sizes="[10, 20, 30, 40]" :page-size="size" layout="total, sizes, prev, pager, next, jumper" :total="total">
 				</el-pagination>
 	</el-card>
-	
+	</div>
 </template>
 
 <script>
@@ -101,7 +102,7 @@
 </script>
 
 <style>
-	.el-pagination{
+.score_box .el-pagination{
 		margin-top: 20px;
 		text-align: center;
 	}
