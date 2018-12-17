@@ -1,6 +1,6 @@
 <template>
 	<el-row type="flex" justify="start">
-		<el-col :span="6" style="padding-top: 10;">
+		<el-col :span="6" style="padding: 10px;">
 			<el-autocomplete  prefix-icon="el-icon-search"  clearable value-key="name"  class="inline-input" v-model="result" :fetch-suggestions="querySearch" placeholder="请输入内容" @select="handleSelect"></el-autocomplete>
 		</el-col>
 		<el-col :span="18">

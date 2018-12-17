@@ -5,13 +5,21 @@
 			<span>请假人员</span>
 			<el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
 		</div>
-		<el-table :data="leavepeople" style="width: 100%">
-			<el-table-column type="index" width="50"></el-table-column>
-			<el-table-column prop="name" label="姓名"></el-table-column>
-			<el-table-column prop="cause" label="事由"></el-table-column>
-			<el-table-column prop="timestart" label="开始时间"></el-table-column>
-			<el-table-column prop="timeend" label="结束时间"></el-table-column>
-			<el-table-column prop="notes" label="备注"></el-table-column>
+		
+		<el-table :data="leavepeople"  v-loading="loading" style="width: 100%">
+			<el-table-column type="index" label="序号"  width="50"></el-table-column>
+			<el-table-column prop="name" label="姓名" ></el-table-column>
+			<el-table-column prop="partment" label="部门" ></el-table-column>
+			<el-table-column prop="region" label="事由" ></el-table-column>
+			<el-table-column  label="时间" >
+				<template slot-scope="scope">
+					{{timeFrmate(scope.row.start)}}到{{scope.row.end|timeFrmate}}
+				</template>
+				
+			</el-table-column>
+			<el-table-column prop="other" label="紧急联系人" ></el-table-column>
+			<el-table-column prop="other_phone" label="紧急联系人电话" ></el-table-column>
+			<el-table-column prop="leave_desc" label="描述" ></el-table-column>
 			<el-table-column label="操作">
 				<template slot-scope="scope">
 					<el-button size="mini" @click="agree">同意</el-button>
@@ -29,47 +37,36 @@
 </template>
 
 <script>
+	import axios from "axios";
+	import qs from "qs";
 	export default {
 		data() {
 			return {
 				size: 10,
 				total: 100,
 				page: 1,
-				leavepeople: [{
-					name: "小明",
-					cause: "家有急事",
-					timestart: "2018-12-1,12:30",
-					timeend: "2018-12-2,12:30",
-					notes: "尽量提前回来"
-				},{
-					name: "小王",
-					cause: "身体酸痛",
-					timestart: "2018-12-1,9:30",
-					timeend: "2018-12-2,9:30",
-					notes: "尽量提前回来"
-				},{
-					name: "小李",
-					cause: "家有急事",
-					timestart: "2018-12-3,9:30",
-					timeend: "2018-12-4,9:30",
-					notes: "尽量提前回来"
-				},{
-					name: "小华",
-					cause: "感冒发烧",
-					timestart: "2018-12-4,9:30",
-					timeend: "2018-12-5,9:30",
-					notes: "尽量提前回来"
-				}, {
-					name: "小红",
-					cause: "头痛眼昏",
-					timestart: "2018-12-4,9:30",
-					timeend: "2018-12-6,9:30",
-					notes: "尽量提前回来"
-				}, ]
+				leavepeople: [],
+				loading:false,
 
 			};
 		},
 		methods: {
+			timeFrmate(timestamp) {
+				let time=new Date(timestamp*1000);
+				let y=time.getFullYear();
+				let M=time.getMonth();
+				let d=time.getDate();
+				let h=time.getHours();
+				let m=time.getMinutes();
+				let s=time.getSeconds();
+				h = h < 10 ? ('0' + h) : h;
+				m = m < 10 ? ('0' + m) : m;
+				s = s < 10 ? ('0' + s) : s;
+				return y+"-" + (M + 1) + '-' + d + ',' + h + ":" + m + ":" + s;
+				
+			},
+			
+			
 			agree() {
 			        this.$alert('<i>确认同意请假？</i>', '批准同意', {
 			          dangerouslyUseHTMLString: true
@@ -81,35 +78,27 @@
 		          cancelButtonText: '取消',})
 			},
 			handleSizeChange(s) {
-				this.leavepeople =  this.getleavepeople(s);
+				this.size = s;
+				this.page = 1;
+				this.getleavepeople(1);
 			},
 			handleCurrentChange(p) {
-				console.log(p);
-				this.leavepeople =  this.getleavepeople(this.size);
+				this.page = p;
+				this.getleavepeople(p);
 			},
-			getleavepeople(n){
-				let arr=[];
-				let names=["小明","小花","小张","小王","小李"];
-				let causes=["家有急事","身体酸痛","感冒发烧","头痛眼昏","孩子有事"];
-				let notess=["尽量提前回来","可能会推迟","完事儿就回来","迫不得已","很紧急"];
-				for(let i=0;i<n;i++){
-					let index=Math.floor(Math.random()*names.length);
-					let j=Math.floor(Math.random()*causes.length);
-					let k=Math.floor(Math.random()*notess.length);
-					let s={
-						id:1,
-						name:names[index],
-						cause:causes[j],
-						timestart:"12"+"-"+Math.floor(Math.random()*30)+","+Math.floor(Math.random()*24)+":"+"30",
-						timeend:"12"+"-"+Math.floor(Math.random()*31)+","+Math.floor(Math.random()*24)+":"+"30",
-						notes:notess[k]
-					};
-					arr.push(s);
-				}
-				return arr;
-			}
+			getleavepeople(page){
+				this.loading = true;
+				const url = "http://192.168.255.30:8888/index.php/Index/Index/getLeaveList";
+				axios.post(url,qs.stringify({page:page,size:this.size})).then(res=>{this.leavepeople = res.data.list;console.log(res);this.total = res.data.total;this.loading = false;}).catch(err=>{this.loading = false;});
+				
+			},
 			
+			
+		},
+		created(){
+			this.getleavepeople(1)
 		}
+		
 	}
 </script>
 
