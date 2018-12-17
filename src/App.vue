@@ -7,6 +7,7 @@
 		  <el-container>
 		    <el-header>
 		    	<admin-header></admin-header>
+		    	<admian-tabs></admian-tabs>
 		    </el-header>
 		    <el-main>
 		    	<router-view></router-view>
@@ -20,6 +21,7 @@
 <script>
 	import AsideNav from "@/components/AsideNav.vue";
 	import AdminHeader from "@/components/Header.vue";
+	import AdmianTabs from "@/components/Tabs.vue";
 	
 	export default {
 
@@ -29,7 +31,8 @@
 		},
 		components:{
 			AsideNav,
-			AdminHeader
+			AdminHeader,
+			AdmianTabs
 		},
 		
 		methods: {
@@ -49,6 +52,7 @@
 		background-color: #f2f2f2;
 	}
 	.el-header{
+		height:100px!important;
 		background-color: #FFFFFF;
 	}
 	.el-aside{
