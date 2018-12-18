@@ -1,10 +1,9 @@
 <template>
-	
 		<el-container id="app">
 		  <el-aside width="220px">
 		  	<aside-nav></aside-nav>
 		  </el-aside>
-		  <el-container>
+		<el-container>
 		    <el-header>
 		    	<admin-header></admin-header>
 		    	<admian-tabs></admian-tabs>
@@ -13,9 +12,8 @@
 		    	<router-view></router-view>
 		    </el-main>
 		    <el-footer>©2018-2020 非凡学院</el-footer>
-		  </el-container>
 		</el-container>
-
+		</el-container>
 </template>
 
 <script>
@@ -53,7 +51,11 @@
 	}
 	.el-header{
 		height:100px!important;
+		padding: 0px;
 		background-color: #FFFFFF;
+	}
+	.el-header .el-row{
+		margin-bottom: 0px;
 	}
 	.el-aside{
 		background-color: #20222A!important;

@@ -20,23 +20,23 @@
 					icon: 'fa fa-home'
 				}, {
 					label: '布局',
-					path: '/layout',
-					icon: 'fa fa-home'
+					path: '/layerout',
+					icon: 'fa fa-bars'
 				}, {
 					label: '容器',
 					path: '/container',
-					icon: 'fa fa-home'
+					icon: 'fa fa-arrows-alt'
 				}, {
 					label: '图标',
 					path: '/icon',
-					icon: 'fa fa-home'
+					icon: 'fa fa-adn'
 				}],
 				activeName: '/home',
 			}
 		},
 		methods:{
-			handleClick(tab){console.log(tab);this.$router.push(this.activeName);},
-			handleRemove(){},
+			handleClick(){this.$router.push(this.activeName);},
+			handleRemove(name){this.tabs=this.tabs.filter(item=>item.path!=name);this.activeName=this.tabs[0].path;this.$router.push(this.activeName)},
 		}
 	}
 	
