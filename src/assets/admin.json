@@ -1,0 +1,45 @@
+[
+	{
+		"title": "Basic",
+		"icon": "el-icon-location",
+		"sub": [
+			{
+				"title": "layerout布局",
+				"path": "/layerout"
+			}, {
+				"title": "container布局",
+				"path": "/container"
+			}, {
+				"title": "icon 图标",
+				"path": "/icon"
+			}
+		]
+	}, {
+		"title": "Form",
+		"icon": "el-icon-location",
+		"sub": [
+			{
+				"title": "Cascader 级联",
+				"path": "/cascader"
+			}, {
+				"title": "Input 输入框",
+				"path": "/input"
+			}
+		]
+	}, {
+		"title": "Dta",
+		"icon": "el-icon-location",
+		"sub": [
+			{
+				"title": "Score 成绩",
+				"path": "/score"
+			}, {
+				"title": "LeaveTips 请假条",
+				"path": "/leavetips"
+			}, {
+				"title": "TotalTips 综合",
+				"path": "/totaltips"
+			}
+		]
+	}
+]

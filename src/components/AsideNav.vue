@@ -16,46 +16,11 @@
 </template>
 
 <script>
+	import {mapMutations} from "vuex";
 	export default{
 		data(){
 		return{
-			nav: [{
-					title: "Basic",
-					icon: "el-icon-location",
-					sub:[{
-						title: "layerout布局",
-						path: "/layerout"
-					}, {
-						title: "container布局",
-						path: "/container"
-					}, {
-						title: "Icon 图标",
-						path: "/icon"
-					}]
-				},{
-					title: "Form",
-					icon: "el-icon-location",
-					sub:[{
-						title: "Cascader 级联",
-						path: "/cascader"
-					}, {
-						title: "Input 输入框",
-						path: "/input"
-					}]
-				},{
-					title: "Dta",
-					icon: "el-icon-location",
-					sub:[{
-						title: "Score 成绩",
-						path: "/score"
-					}, {
-						title: "LeaveTips 请假条",
-						path: "/leavetips"
-					}, {
-						title: "TotalTips 综合",
-						path: "/totaltips"
-					},]
-				}]
+			nav:[] 
 		}},
 		methods:{
 			open(key, keyPath) {
@@ -64,14 +29,34 @@
 			close(key, keyPath) {
 				console.log(key, keyPath);
 			},
-			select( index, indexPath){
-				this.$router.push(index);
+			getTab(path){
+				console.log(path)
+				for(let i=0;i<this.nav.length;i++){
+					for(let j=0;j<this.nav[i].sub.length;j++){
+						if(this.nav[i].sub[j].path==path){
+							return this.nav[i].sub[j];
+						}
+					}
+				}
+				return false;
 				
+			},
+			select(index, indexPath){
+//				this.$router.push(index);
 				console.log(index);
 				console.log(indexPath);
-			}
-
-
+				const tab = this.getTab(index);
+				console.log(tab);
+				if(tab){
+					this.addTab(tab);
+					console.log(tab);
+					this.$router.push(index);
+				}
+			},
+			...mapMutations(['addTab']),
+		},
+		created(){
+			this.nav = require("../assets/admin.json");
 		}
 	}
 	

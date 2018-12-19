@@ -9,7 +9,9 @@
 		    	<admian-tabs></admian-tabs>
 		    </el-header>
 		    <el-main>
+		    	<keep-alive>
 		    	<router-view></router-view>
+		    	</keep-alive>
 		    </el-main>
 		    <el-footer>©2018-2020 非凡学院</el-footer>
 		</el-container>

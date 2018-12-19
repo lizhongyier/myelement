@@ -5,7 +5,7 @@
 		</el-col>
 		<el-col :span="18">
 	<div class="line"></div>
-	<el-menu :default-active="activeIndex+''" class="el-menu-demo" mode="horizontal" @select="select" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+	<el-menu :default-active="activeIndex+''" class="el-menu-demo hidden-md-and-down" mode="horizontal" @select="select" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
 		<el-menu-item index="1">处理中心</el-menu-item>
 		<el-submenu index="2">
 			<template slot="title">我的工作台</template>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+	import 'element-ui/lib/theme-chalk/display.css';
 	export default {
 		data() {
 			return{
@@ -68,5 +69,7 @@
 </script>
 
 <style>
-
+.inline-input{
+	min-width: 150px;
+}
 </style>
